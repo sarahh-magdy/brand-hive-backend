@@ -1,6 +1,6 @@
 import { RegisterDto } from "../dto/register.dto";
 import * as bcrypt from 'bcrypt';
-import { generateOtp } from "src/common/helpers";
+import { generateOtp } from "../../../common/helpers";
 import { Injectable } from "@nestjs/common";
 import { Customer } from "../entities/auth.entity";
 
