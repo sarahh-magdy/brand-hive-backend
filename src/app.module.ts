@@ -10,10 +10,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import devConfig from './config/env/dev.config';
 import { CustomerModule } from './modules/customer/customer.module';
-import { AuthGuard } from '@common/guards/auth.guard';
-import { RolesGuard } from '@common/guards/roles.guard';
 
-import { UserMongoModule } from '@shared/index';
+// التعديل هنا: شلنا @common واستخدمنا المسار الحقيقي
+import { AuthGuard } from './common/guards/auth.guard'; 
+import { RolesGuard } from './common/guards/roles.guard';
+
+// التعديل هنا: شلنا @shared واستخدمنا المسار الحقيقي
+import { UserMongoModule } from './shared/index'; 
 
 @Module({
   imports: [
