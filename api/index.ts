@@ -14,7 +14,6 @@ export const createServer = async (expressInstance: Express) => {
   await app.init();
 };
 
-// Vercel Entry Point
 export default async (req: any, res: any) => {
   await createServer(server);
   server(req, res);
