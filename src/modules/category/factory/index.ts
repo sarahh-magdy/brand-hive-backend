@@ -4,7 +4,7 @@ import { UpdateCategoryDto } from "../dto/update-category.dto";
 import { Category } from "../entities/category.entity";
 import  slugify  from "slugify";
 import { Types } from "mongoose";
-import { CategoryRepository } from "@models/index";
+import { CategoryRepository } from "../../../models/category/category.repository";
 
 @Injectable()
 export class CategoryFactoryService {

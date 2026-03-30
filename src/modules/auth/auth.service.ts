@@ -1,5 +1,6 @@
 import { Injectable, ConflictException, UnauthorizedException } from '@nestjs/common';
-import { CustomerRepository, UserRepository } from '@models/index';
+import { CustomerRepository } from '../../models/customer/customer.repository';
+import { UserRepository } from '../../models/common/user.repository';
 import { ConfigService } from '@nestjs/config';
 import { Customer } from './entities/auth.entity';
 import { sendMail } from '@common/helpers';
