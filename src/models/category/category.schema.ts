@@ -15,6 +15,8 @@ export class Category {
     @Prop({ type: SchemaTypes.ObjectId, required: true , ref: 'Admin' })
     createdBy: Types.ObjectId;
      
+    @Prop({ type: SchemaTypes.ObjectId, required: true , ref: 'User' })
+    updatedBy: Types.ObjectId;
     //TODO: add logo field
     @Prop({ type: Object })
     logo: object;

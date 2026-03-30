@@ -8,5 +8,5 @@ export class CreateCategoryDto {
     
     // TODO: Add validation for logo
     @IsOptional()
-    logo?: object;
+    logo: object;
 }

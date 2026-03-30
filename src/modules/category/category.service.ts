@@ -1,7 +1,7 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { CategoryRepository } from 'src/models/category/category.repository';
 import { Category } from './entities/category.entity';
-import { UpdateCategoryDto } from './dto/update-category.dto';
+import { Types } from 'mongoose';
 
 @Injectable()
 export class CategoryService {
@@ -13,10 +13,16 @@ export class CategoryService {
     if (categoryExist) {
       throw new ConflictException('Category already exists');
     }
-    return await this.categoryRepository.create(category);
+    return await this.categoryRepository.create({ ...category });
   }
-//UPDATE CATEGORY SERVICE
-  update(id:string , categor: Category ){
-     
+
+// UPDATE CATEGORY SERVICE
+  async update(id:string , category: Category ){
+    const categoryExist = await this.categoryRepository.getOne({slug : category.slug , _id: { $ne: new Types.ObjectId(id) }});
+    if (categoryExist) {
+      throw new ConflictException('Category already exists');
+    }
+    return await this.categoryRepository.updateOne({ _id: new Types.ObjectId(id) }  , category , {new: true});
   }
+  
 }
