@@ -4,9 +4,8 @@ import { RegisterDto } from './dto/register.dto';
 import { AuthFactoryService } from './factory';
 import { LoginDto } from './dto/login.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
-import { AuthGuard } from '@common/guards/auth.guard';
-import { Public } from '@common/decorators/public.decorator';
-
+import { AuthGuard } from '../../common/guards/auth.guard';
+import { Public } from '../../common/decorators/public.decorator';
 @Controller('auth')
 export class AuthController {
   constructor(

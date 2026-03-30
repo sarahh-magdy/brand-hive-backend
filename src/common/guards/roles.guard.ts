@@ -5,9 +5,8 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { ROLES, Roles } from '@common/decorators';
-import { PUBLIC } from '@common/decorators/public.decorator';
-
+import { ROLES } from '../decorators';
+import { PUBLIC } from '../decorators/public.decorator';
 @Injectable()
 export class RolesGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
