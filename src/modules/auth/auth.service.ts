@@ -3,11 +3,10 @@ import { CustomerRepository } from '../../models/customer/customer.repository';
 import { UserRepository } from '../../models/common/user.repository';
 import { ConfigService } from '@nestjs/config';
 import { Customer } from './entities/auth.entity';
-import { sendMail } from '@common/helpers';
+import { sendMail } from '../../common/helpers/send-mail.helper';
 import { LoginDto } from './dto/login.dto';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-
 @Injectable()
 export class AuthService {
   constructor(

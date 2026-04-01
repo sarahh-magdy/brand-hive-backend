@@ -1,19 +1,17 @@
 import { Module } from "@nestjs/common";
-import { 
-    SellerRepository, 
-    AdminRepository, 
-    CustomerRepository, 
-    UserRepository,
-    User, 
-    userSchema, 
-    Seller, 
-    sellerSchema, 
-    Admin, 
-    adminSchema, 
-    Customer, 
-    customerSchema 
-} from "src/models";
 import { MongooseModule } from "@nestjs/mongoose";
+
+import { UserRepository } from "../../models/common/user.repository";
+import { User, userSchema } from "../../models/common/user.schema";
+
+import { SellerRepository } from "../../models/seller/seller.repository";
+import { Seller, sellerSchema } from "../../models/seller/seller.schema";
+
+import { AdminRepository } from "../../models/admin/admin.repository";
+import { Admin, adminSchema } from "../../models/admin/admin.schema";
+
+import { CustomerRepository } from "../../models/customer/customer.repository";
+import { Customer, customerSchema } from "../../models/customer/customer.schema";
 
 @Module({
     imports: [

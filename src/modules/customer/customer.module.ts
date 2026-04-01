@@ -1,12 +1,13 @@
+// src/modules/customer/customer.module.ts
 import { Module } from '@nestjs/common';
 import { CustomerService } from './customer.service';
 import { CustomerController } from './customer.controller';
-import { UserMongoModule } from '@shared/index';
+import { UserMongoModule } from '../../shared/modules/user-mongo.module';
 
 @Module({
   imports: [UserMongoModule],
   controllers: [CustomerController],
-  providers: [CustomerService], 
-  exports: [CustomerService] 
+  providers: [CustomerService],
+  exports: [CustomerService]
 })
 export class CustomerModule {}

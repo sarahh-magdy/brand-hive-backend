@@ -1,20 +1,22 @@
 import { Controller, Post, Body, UseGuards, Put, Param } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
-import { User } from '@common/decorators/user.decorator';
+// مسار نسبي كامل بدل @common/decorators
+import { User } from '../../common/decorators/user.decorator';
 import { CategoryFactoryService } from './factory';
-import { Auth } from '@common/decorators';
-import { AuthGuard } from '@common/guards';
+// مسار نسبي كامل بدل @common/decorators/Auth
+import { Auth } from '../../common/decorators/auth.decorator';
+// مسار نسبي كامل بدل @common/guards
+import { AuthGuard } from '../../common/guards/auth.guard';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Controller('category')
 @Auth(['Admin', 'Customer'])
-@UseGuards(AuthGuard )
+@UseGuards(AuthGuard)
 export class CategoryController {
   constructor(    
     private readonly categoryService: CategoryService,  
     private readonly categoryFactoryService: CategoryFactoryService,
-  
   ) {}
 
   @Post()
@@ -34,10 +36,10 @@ export class CategoryController {
   @Put(':id')
   async update(
     @Param('id') id: string,
-    @Body() updateCategorydto : UpdateCategoryDto,
+    @Body() updateCategoryDto: UpdateCategoryDto,
     @User() user: any
   ){
-    const category = await this.categoryFactoryService.updateCategory( id, updateCategorydto , user);
+    const category = await this.categoryFactoryService.updateCategory(id, updateCategoryDto, user);
     const updatedCategory = await this.categoryService.update(id, category);
     return {
       success: true,
@@ -46,4 +48,3 @@ export class CategoryController {
     };
   }
 }
- 
