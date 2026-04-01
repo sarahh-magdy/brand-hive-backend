@@ -8,7 +8,7 @@ let isInitialized = false;
 
 /**
  * bootstrap
- * ده اللي بيشغل NestJS مرة واحدة بس
+ * بيشغل NestJS مرة واحدة فقط
  */
 async function bootstrap() {
   if (!isInitialized) {
@@ -17,20 +17,25 @@ async function bootstrap() {
       new ExpressAdapter(server),
     );
 
-    app.enableCors(); // لو عايزة CORS
+    app.enableCors();
     await app.init();
-
     isInitialized = true;
+
     console.log('✅ NestJS initialized');
   }
 }
 
+/**
+ * handler
+ * ده اللي Vercel هيشغله لكل request
+ */
 export default async function handler(req: any, res: any) {
+  // اختبار سريع: root /api
   if (req.url === '/api' || req.url === '/api/') {
     return res.status(200).json({ message: "API file is loaded ✅" });
   }
 
-  // لو مش root، شغلي NestJS
+  // أي route NestJS
   await bootstrap();
   return server(req, res);
 }
